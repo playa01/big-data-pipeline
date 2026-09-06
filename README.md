@@ -1,43 +1,38 @@
-# Big Data Pipeline
+# Big Data Coursework Pipeline
 
-End-to-end coursework project for processing company registration and risk data with the Hadoop ecosystem.
+Coursework reconstruction of a Hadoop/Hive analysis project for company registration and risk-style data.
 
 ## Overview
 
-This project documents a small-scale big data workflow built in an Ubuntu virtual machine. The pipeline stores raw CSV data in HDFS, processes it with Hive, exports aggregated tables to MySQL through Sqoop, and presents the results in an ECharts dashboard.
+This repository keeps the materials I could verify from a local Hadoop coursework project: the dataset, final report, dashboard screenshot, and example Hive-style analysis queries. The original VM setup used HDFS, Hive, MySQL, and Sqoop, but the full command scripts were not available as standalone files when this GitHub copy was prepared.
 
 Status: Coursework prototype
 
-The final report and dataset were found locally. The original Flume, Hive, and Sqoop command files were not found as standalone scripts, so this repository includes the report, dataset, and example Hive queries that match the documented analysis.
+The repository should be read as a partial reconstruction, not as a fully reproducible end-to-end data platform.
 
-## Features
+## Available Materials
 
-- Hadoop/HDFS-based raw data storage.
-- Hive-style SQL analysis of enterprise registration data.
-- Sqoop export step described in the final report.
-- ECharts dashboard described and shown in the report screenshot.
+- CSV dataset used in the coursework.
+- Final report from the Hadoop assignment.
+- Dashboard screenshot from the submitted work.
 - Example analytics queries for province, ownership, industry, and risk indicators.
 
-## Tech Stack
+## Technologies Covered
 
-- Hadoop HDFS
-- Hive
-- Sqoop
-- MySQL
-- HTML, JavaScript, ECharts
+- Hadoop HDFS, Hive, Sqoop, and MySQL in the original coursework environment.
+- SQL-style aggregation queries in this repository.
+- ECharts dashboard is visible only through the submitted screenshot/report, not as full source code here.
 - Ubuntu VM on macOS
 
-## Pipeline
+## Documented Workflow
 
 ```mermaid
 flowchart LR
-    A["CSV dataset"] --> B["Flume / ingestion step"]
-    B --> C["HDFS"]
-    C --> D["Hive external tables"]
-    D --> E["Analysis tables"]
-    E --> F["Sqoop export"]
-    F --> G["MySQL"]
-    G --> H["ECharts dashboard"]
+    A["CSV dataset"] --> B["HDFS in coursework VM"]
+    B --> C["Hive external tables"]
+    C --> D["Aggregation queries"]
+    D --> E["MySQL export described in report"]
+    E --> F["Dashboard screenshot/report"]
 ```
 
 ## Project Structure
@@ -54,7 +49,7 @@ sql/
 
 ## Getting Started
 
-This project depends on a Hadoop environment rather than a local Python package.
+This project depends on a Hadoop environment rather than a local Python package. The commands below show the intended direction, but they may need adjustment because the original VM scripts were not recovered.
 
 Expected services:
 
@@ -71,7 +66,7 @@ hdfs dfs -put data/train.csv /user/bigdata/enterprise_risk/
 hive -f sql/analysis_queries.sql
 ```
 
-The exact HDFS paths, Hive database name, and Sqoop connection string should be adjusted to your local VM setup.
+The exact HDFS paths, Hive database name, table DDL, and Sqoop connection string should be adjusted to your local VM setup.
 
 ## Results
 
@@ -106,4 +101,3 @@ Missing from the local files I could verify:
 - Add Sqoop import/export shell scripts with placeholder credentials.
 - Add a smaller public sample dataset.
 - Add a `dashboard/` folder if the original source is recovered.
-
